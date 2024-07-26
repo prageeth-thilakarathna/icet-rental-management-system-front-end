@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CustomerService } from '../../../service/customer/customer.service';
 import { Customer } from '../../../model/customer';
 import { FormsModule } from '@angular/forms';
@@ -10,15 +10,20 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './customer-register.component.html',
   styleUrl: './customer-register.component.css'
 })
-export class CustomerRegisterComponent {
+export class CustomerRegisterComponent implements OnInit {
 
- private customerService = inject(CustomerService);
+  private customerService = inject(CustomerService);
 
- customer = new Customer('', '', '');
+  customer = new Customer('', '', '');
 
- onSubmit(){
-  this.customerService.addCustomer(this.customer);
- }
+  ngOnInit(): void {
+    
+  }
+
+  onSubmit() {
+    this.customerService.addCustomer(this.customer);
+  }
+
 
 
 
